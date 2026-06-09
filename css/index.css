@@ -135,10 +135,11 @@
     font-weight: bold;
     border-radius: 4px;
     text-transform: uppercase;
+
 }
 
 .artigo-destque h3 {
-    margin: 10px 0;
+    margin: 10px 5px;
     font-size: 22px;
 }
 
