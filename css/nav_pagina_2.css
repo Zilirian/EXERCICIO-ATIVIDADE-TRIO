@@ -1,0 +1,232 @@
+* {
+    box-sizing: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.body-nav {
+    display: flex;
+    align-items: center;
+    background: black;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 10px 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    max-height: 40px;
+}
+
+.body-nav:hover {
+    background: rgba(26, 25, 25, 0.924);
+}
+
+
+.text-nav {
+    color: aliceblue;
+    flex: 1;
+    text-align: left;
+    color: aliceblue;
+    font-size: 24px;
+    margin: 0;
+    margin-right: 35px;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+.link-nav:hover {
+    color: rgba(199, 205, 211, 0.938);
+}
+
+.nav-spacer {
+    flex: 1;
+}
+
+.link-nav {
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    color: aliceblue;
+    -webkit-text-stroke: 0.2px rgb(255, 255, 230);
+    white-space: nowrap;
+}
+
+
+
+/* ==========================================================================
+1. VARIÁVEIS DE CORES & CONFIGURAÇÃO GLOBAL (Vibe Resident Evil)
+   ========================================================================== */
+:root {
+    --bg-principal: #0f1115;      /* Grafite ultra escuro para o fundo */
+    --bg-card: #181c24;           /* Cinza azulado para destacar os blocos */
+    --texto-claro: #e2e8f0;       /* Texto principal (confortável para ler) */
+    --texto-mutado: #94a3b8;      /* Texto secundário e descrições */
+    --acc-vermelho: #bd1616;      /* Vermelho vibrante para detalhes e perigo */
+    --acc-ouro: #e0a96d;          /* Ouro envelhecido para títulos e destaques */
+    --borda: #2a313d;             /* Divisórias sutis */
+}
+
+/* Reset básico para evitar surpresas entre navegadores */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-principal);
+    color: var(--texto-claro);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+2. ESTRUTURA E LAYOUT (CONTAINER PRINCIPAL)
+   ========================================================================== */
+.container-principal {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* Header / Banner Superior */
+.barra-titulo {
+    border-bottom: 2px solid var(--acc-vermelho);
+    padding-bottom: 20px;
+    margin-bottom: 40px;
+}
+
+.barra-titulo h2 {
+    font-size: 2.5rem;
+    color: var(--acc-ouro);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.barra-titulo p {
+    color: var(--texto-mutado);
+    font-size: 1.1rem;
+}
+
+/* Grid Layout (Padrão para celular) */
+.layout-conteudo {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+}
+
+/* Media Query para Desktop (Telas maiores que 768px) */
+@media (min-width: 768px) {
+    .layout-conteudo {
+        grid-template-columns: 2.5fr 1fr; /* Esquerda ganha mais espaço que a barra lateral */
+    }
+}
+
+/* ==========================================================================
+3. SEÇÃO DA HISTÓRIA E ARTIGOS (CONTEÚDO ESQUERDO)
+   ========================================================================== */
+.conteudo-esquerdo {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.conteudo-esquerdo article h3 {
+    font-size: 1.8rem;
+    color: var(--texto-claro);
+    margin-bottom: 15px;
+    position: relative;
+    padding-left: 15px;
+}
+
+/* Linha vertical estilizada ao lado dos títulos h3 */
+.conteudo-esquerdo article h3::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 15%;
+    height: 70%;
+    width: 4px;
+    background-color: var(--acc-vermelho);
+}
+
+.conteudo-esquerdo p {
+    margin-bottom: 15px;
+    color: #cbd5e1;
+    font-size: 1.05rem;
+    text-align: justify;
+}
+
+/* Customização das tags de ênfase dentro do texto */
+strong {
+    color: var(--acc-ouro);
+    font-weight: 600;
+}
+
+em {
+    color: #ff8080;
+    font-style: italic;
+}
+
+/* Lista estilizada da DLC */
+.dlc-lore ul {
+    list-style: none;
+    margin-top: 20px;
+}
+
+.dlc-lore li {
+    background-color: var(--bg-card);
+    border: 1px solid var(--borda);
+    border-left: 4px solid var(--acc-ouro); /* Detalhe em ouro na borda esquerda */
+    padding: 20px;
+    margin-bottom: 16px;
+    border-radius: 4px;
+}
+
+/* ==========================================================================
+4. BARRA LATERAL (PERSONAGENS-CHAVE)
+   ========================================================================== */
+.barra-lateral {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.barra-lateral h3 {
+    font-size: 1.3rem;
+    color: var(--acc-ouro);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid var(--borda);
+    padding-bottom: 8px;
+    margin-bottom: 10px;
+}
+
+/* Cards dos Personagens */
+.card-personagem {
+    background-color: var(--bg-card);
+    border: 1px solid var(--borda);
+    padding: 20px;
+    border-radius: 6px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+/* Efeito sutil ao passar o mouse por cima do card */
+.card-personagem:hover {
+    transform: translateY(-3px);
+    border-color: var(--acc-vermelho);
+}
+
+.card-personagem h4 {
+    color: var(--texto-claro);
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+
+.card-personagem p {
+    color: var(--texto-mutado);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}

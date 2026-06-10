@@ -1,0 +1,342 @@
+/* ==========================================================================
+   1. TOKENS DE DESIGN (Variáveis Globais)
+   ========================================================================== */
+:root {
+    /* Paleta de Cores - Tema Forza Horizon */
+    --fh-bg-base: #0b0c10;
+    --fh-bg-surface: rgba(31, 40, 51, 0.85);
+    --fh-magenta: #ff0055;
+    --fh-cyan: #45a29e;
+    --fh-text-primary: #f8f9fa;
+    --fh-text-secondary: #e2e8f0;
+    --fh-border: rgba(255, 255, 255, 0.15);
+    
+    /* Tipografia e Espaçamentos */
+    --font-stack: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 3rem;
+    --radius-md: 12px;
+    --transition-fast: 0.3s ease-in-out;
+}
+
+/* ==========================================================================
+   2. RESET E BASE (Com Background do Forza & Efeito Parallax)
+   ========================================================================== */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    /* Imagem de Fundo com a Camada Escura (Overlay) */
+    background-image: 
+        linear-gradient(
+            rgba(11, 12, 16, 0.75), 
+            rgba(11, 12, 16, 0.90)  
+        ),
+        url('https://compass-ssl.xbox.com/assets/b9/0a/b90ad58f-9950-44a7-87fa-1b0f0b6a0053.jpg?n=Forza-Horizon-5_GLP-Page-Hero-1084_1920x1080.jpg'); 
+    
+    background-color: var(--fh-bg-base);
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed; 
+    background-repeat: no-repeat;
+    
+    color: var(--fh-text-primary);
+    font-family: var(--font-stack);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Customização da Barra de Rolagem */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #000;
+}
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border: 1px solid var(--fh-magenta);
+    border-radius: 5px;
+}
+
+/* ==========================================================================
+   3. NAVEGAÇÃO (Glassmorphism no Topo)
+   ========================================================================== */
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(11, 12, 16, 0.75);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--fh-border);
+}
+
+.body-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+}
+
+.text-nav {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--fh-text-primary);
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.link-nav {
+    color: var(--fh-text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color var(--transition-fast);
+    position: relative;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+.link-nav:hover {
+    color: var(--fh-magenta);
+}
+
+.link-nav::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: var(--fh-magenta);
+    transition: width var(--transition-fast);
+}
+
+.link-nav:hover::after {
+    width: 100%;
+}
+
+/* ==========================================================================
+   4. ESTRUTURA PRINCIPAL E TÍTULO
+   ========================================================================== */
+.container-principal {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-lg) 2rem;
+}
+
+.barra-titulo {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    background: rgba(0, 0, 0, 0.4);
+    padding: 2rem;
+    border-radius: var(--radius-md);
+    backdrop-filter: blur(5px);
+    border: 1px solid var(--fh-border);
+}
+
+.barra-titulo h2 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, var(--fh-magenta), var(--fh-cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: var(--spacing-sm);
+    letter-spacing: 1px;
+}
+
+.barra-titulo p {
+    font-size: 1.2rem;
+    color: var(--fh-text-secondary);
+}
+
+.layout-conteudo {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+}
+
+@media (min-width: 992px) {
+    .layout-conteudo {
+        grid-template-columns: 2.5fr 1fr;
+        align-items: start;
+    }
+}
+
+/* ==========================================================================
+   5. ARTIGOS E CONTEÚDO (Transparência Premium)
+   ========================================================================== */
+.conteudo-esquerdo {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+article {
+    background: var(--fh-bg-surface);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--fh-border);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+article h3 {
+    font-size: 1.8rem;
+    color: var(--fh-text-primary);
+    margin-bottom: 1rem;
+    border-left: 4px solid var(--fh-magenta);
+    padding-left: 1rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+article p {
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+}
+
+article ul {
+    list-style: none;
+    margin-top: 1rem;
+}
+
+article ul li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.8rem;
+    color: var(--fh-text-primary);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+}
+
+article ul li::before {
+    content: '❯';
+    position: absolute;
+    left: 0;
+    color: var(--fh-cyan);
+    font-size: 0.8rem;
+    top: 3px;
+}
+
+strong {
+    color: #fff;
+    font-weight: 700;
+}
+
+em {
+    color: var(--fh-cyan);
+    font-style: normal;
+}
+
+.divisor-linha {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--fh-magenta), transparent);
+    margin: var(--spacing-md) 0;
+}
+
+.lista-dlcs h4 {
+    margin: 1.5rem 0 0.5rem 0;
+    color: var(--fh-cyan);
+    font-size: 1.2rem;
+}
+
+/* ==========================================================================
+   6. BARRA LATERAL (Cards interativos)
+   ========================================================================== */
+.barra-lateral {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.barra-lateral h3 {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    color: var(--fh-magenta);
+    margin-bottom: var(--spacing-sm);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.card-info, .card-destaque-carro {
+    background: var(--fh-bg-surface);
+    backdrop-filter: blur(10px);
+    padding: 1.5rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--fh-border);
+    transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.card-info:hover, .card-destaque-carro:hover {
+    transform: translateY(-5px);
+    border-color: var(--fh-magenta);
+    box-shadow: 0 10px 30px rgba(255, 0, 85, 0.2);
+}
+
+.card-info p {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    color: var(--fh-text-primary);
+}
+
+.card-destaque-carro h4 {
+    color: var(--fh-cyan);
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+/* ==========================================================================
+   7. RODAPÉ
+   ========================================================================== */
+footer {
+    text-align: center;
+    padding: var(--spacing-lg) 2rem;
+    border-top: 1px solid var(--fh-border);
+    margin-top: var(--spacing-lg);
+    background: rgba(11, 12, 16, 0.85);
+    backdrop-filter: blur(10px);
+}
+
+footer p {
+    color: var(--fh-text-secondary);
+    font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   8. MEDIA QUERIES (Responsividade)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .body-nav {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .barra-titulo h2 {
+        font-size: 2rem;
+    }
+    
+    .container-principal {
+        padding: var(--spacing-md) 1rem;
+    }
+}
