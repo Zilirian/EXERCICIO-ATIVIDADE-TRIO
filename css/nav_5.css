@@ -1,0 +1,200 @@
+/* ==========================================
+   RESET & VARIÁVEIS GLOBAIS (TEMA EA FC 26)
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'DIN Pro', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+:root {
+    --bg-principal: #050607;
+    --bg-card: #0d1013;
+    --bg-nav: #08090b;
+    --texto-principal: #ffffff;
+    --texto-secundario: #8a99a8;
+    --accent-fc: #54ff00; /* Verde Limão/Neon característico do EA FC */
+    --borda: #1c232a;
+}
+
+body {
+    background-color: var(--bg-principal);
+    color: var(--texto-principal);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ==========================================
+   NAVBAR (MENU DE NAVEGAÇÃO)
+   ========================================== */
+nav {
+    background-color: var(--bg-nav);
+    border-bottom: 2px solid var(--borda);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(12px);
+}
+
+.body-nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 2rem;
+}
+
+.text-nav {
+    font-size: 1.6rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    
+    /* Efeito de gradiente premium focado no verde neon do jogo */
+    background: linear-gradient(45deg, #ffffff, var(--accent-fc));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.8rem;
+}
+
+.link-nav {
+    color: var(--texto-secundario);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.2s ease;
+}
+
+.link-nav:hover {
+    color: var(--accent-fc);
+}
+
+/* Marcação da página ativa (Home) */
+.link-nav[href="index.html"] {
+    color: var(--texto-principal);
+    border-bottom: 2px solid var(--accent-fc);
+    padding-bottom: 4px;
+}
+
+/* ==========================================
+   CONTEÚDO PRINCIPAL (WIKI)
+   ========================================== */
+.wiki-content {
+    max-width: 900px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+}
+
+section {
+    background-color: var(--bg-card);
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+    padding: 2.5rem;
+    margin-bottom: 2.5rem;
+    box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.7);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+section:hover {
+    border-color: var(--accent-fc);
+    box-shadow: 0 10px 30px -10px rgba(84, 255, 0, 0.15);
+}
+
+/* Elementos de Texto */
+h2 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    letter-spacing: 1px;
+    color: var(--texto-principal);
+    border-left: 4px solid var(--accent-fc); /* Detalhe tático na lateral do título */
+    padding-left: 12px;
+}
+
+h3 {
+    font-size: 1.3rem;
+    color: var(--accent-fc);
+    text-transform: uppercase;
+    margin: 1.5rem 0 1rem 0;
+}
+
+p {
+    color: var(--texto-secundario);
+    margin-bottom: 1.2rem;
+    font-size: 1.05rem;
+}
+
+strong {
+    color: var(--texto-principal);
+}
+
+/* Lista estilo Menu Tático / Atributos */
+ul {
+    list-style: none;
+    margin: 1.5rem 0;
+}
+
+li {
+    color: var(--texto-secundario);
+    margin-bottom: 1rem;
+    padding-left: 2rem;
+    position: relative;
+    font-size: 1.05rem;
+}
+
+/* Marcador personalizado usando o famoso triângulo indicador de jogador do EA FC */
+li::before {
+    content: "▲";
+    color: var(--accent-fc);
+    position: absolute;
+    left: 0;
+    top: 2px;
+    font-size: 0.9rem;
+}
+
+/* Linha divisória discreta estilo divisão de partidas */
+hr {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--borda), transparent);
+    margin: 3.5rem 0;
+}
+
+/* ==========================================
+   RESPONSIVIDADE (MOBILE)
+   ========================================== */
+@media (max-width: 768px) {
+    .body-nav {
+        flex-direction: column;
+        gap: 1.2rem;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .wiki-content {
+        margin: 2rem auto;
+        padding: 0 1rem;
+    }
+
+    section {
+        padding: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+    }
+}
