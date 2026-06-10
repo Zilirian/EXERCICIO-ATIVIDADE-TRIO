@@ -155,7 +155,6 @@ nav {
     font-weight: 900;
     text-transform: uppercase;
     background: linear-gradient(90deg, var(--fh-magenta), var(--fh-cyan));
-    -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: var(--spacing-sm);
     letter-spacing: 1px;
